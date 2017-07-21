@@ -1,14 +1,17 @@
 {
-  "name": "youtubetomp3",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "jquery": "^3.2.1"
-  }
+	"name": "youtubetomp3",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "electron ."
+	},
+	"author": "Andrei Lucaci (http://github.com/andreilucaci)",
+	"license": "ISC",
+	"dependencies": {
+		"jquery": "^3.2.1"
+	},
+	"devDependencies": {
+		"electron": "^1.6.11"
+	}
 }
