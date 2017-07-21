@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Youtube To Mp3</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+<div class="center">
+    <section id="search" data-role="search-section">
+        <div class="search-wrapper" data-role="search-form">
+            <input type="text" placeholder="Youtube url ..." data-role="search-box" name="searchBox"/>
+            <button class="button" data-action="search">Search</button>
+        </div>
+    </section>
+    <section style="display: none;" id="loader">
+        <img src="http://andreilucaci.ro/Content/Img/engine-loader.GIF" alt="loader" data-role="loader"/>
+    </section>
+    <section id="video-content" class="video-content">
+        <iframe id="videoiframe"></iframe>
+        <textarea id="contentarea"></textarea>
+    </section>
+</div>
+<script src="js/view.js" type="text/javascript"></script>
+</body>
+</html>
