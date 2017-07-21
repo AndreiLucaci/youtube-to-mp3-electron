@@ -20,6 +20,9 @@
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Compile Include="js\view_actions.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="main.js" />
     <Content Include="css\main.css" />
     <Compile Include="js\view.js" />
