@@ -1,6 +1,3 @@
-/**
- * Created by a.lucaci on 7/21/2017.
- */
 const {app, BrowserWindow} = require('electron');
 const url = require('url');
 const path = require('path');

@@ -1,13 +1,10 @@
-/**
- * Created by a.lucaci on 7/21/2017.
- */
 let $ = require("jquery");
 let https = require("https");
 
 $("[data-action='search']").on("click", function(ev, el){
     var url = $("[data-role='search-box']").val();
 
-    let loader = $("#loader");
+    const loader = $("#loader");
     loader.show();
 
     https.get(url, (res) => {
@@ -32,6 +29,6 @@ $("[data-action='search']").on("click", function(ev, el){
         });
 
     }).on("error", e => {
-        console.error(`Got error: ${e.message}`)
+	    console.error(`Got error: ${e.message}`);
     });
 });
