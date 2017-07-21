@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "electron ."
+		"start": "electron main.js"
 	},
 	"author": "Andrei Lucaci (http://github.com/andreilucaci)",
 	"license": "ISC",

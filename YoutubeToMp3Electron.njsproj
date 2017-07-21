@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{68debd54-b049-4b8d-ad7a-847d7dd3f242}</ProjectGuid>
+    <ProjectGuid>{5fede9fc-9a62-4b42-92b7-ba4d391b38c2}</ProjectGuid>
     <ProjectHome />
     <ProjectView>ShowAllFiles</ProjectView>
     <StartupFile>main.js</StartupFile>
@@ -23,10 +23,15 @@
     <Compile Include="main.js" />
     <Content Include="css\main.css" />
     <Compile Include="js\view.js" />
+    <Compile Include="js\youtube_url_parser.js" />
+    <Content Include="obj\Debug\YoutubeToMp3Electron.njsproj.FileListAbsolute.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin" />
     <Folder Include="css" />
     <Folder Include="js" />
+    <Folder Include="obj" />
+    <Folder Include="obj\Debug" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->

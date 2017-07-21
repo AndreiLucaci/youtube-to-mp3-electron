@@ -1,34 +1,48 @@
 let $ = require("jquery");
 let https = require("https");
+let urlParser = require("./youtube_url_parser");
 
-$("[data-action='search']").on("click", function(ev, el){
-    var url = $("[data-role='search-box']").val();
+$("[data-action='search']").on("click", function () {
+	try {
+		const url = $("[data-role='search-box']").val();
+		const result = urlParser.parse(url);
 
-    const loader = $("#loader");
-    loader.show();
+		debugger;
 
-    https.get(url, (res) => {
-        const { statusCode } = res;
+		if (!result.valid()) {
+			alert("Invalid YouTube url");
+			return;
+		}
 
-        let error;
-        if (statusCode !== 200){
-            error = new Error("Request failed. "+`Status Code: ${statusCode}.`);
-            console.error(error.message);
+		const loader = $("#loader");
+		loader.show();
 
-            res.resume();
-            return;
-        }
+		https.get(url,
+			(res) => {
+				const { statusCode } = res;
+				if (statusCode !== 200) {
+					const error = new Error("Request failed. " + `Status Code: ${statusCode}.`);
+					console.error(error.message);
 
-        let rawData = "";
-        res.on("data", chunk => {rawData += chunk;});
-        res.on("end", () => {
-            loader.hide();
-            console.log(rawData);
-            $("#contentarea").val(rawData);
-            $("#video-content").attr("src", url);
-        });
+					res.resume();
+					return;
+				}
 
-    }).on("error", e => {
-	    console.error(`Got error: ${e.message}`);
-    });
+				let rawData = "";
+				res.on("data", chunk => { rawData += chunk; });
+				res.on("end",
+					() => {
+						loader.hide();
+						console.log(rawData);
+						$("#contentarea").val(rawData);
+						$("#videoiframe").attr("src", url);
+					});
+
+			}).on("error",
+			e => {
+				console.error(`Got error: ${e.message}`);
+			});
+	} catch (ex) {
+		alert(ex.message);
+	}
 });
