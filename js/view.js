@@ -1,37 +1,25 @@
-/**
- * Created by a.lucaci on 7/21/2017.
- */
 let $ = require("jquery");
-let https = require("https");
+let viewActions = require("./js/view_actions");
+let urlParser = require("./js/youtube_url_parser");
 
-$("[data-action='search']").on("click", function(ev, el){
-    var url = $("[data-role='search-box']").val();
+$("[data-action='search']").on("click", function(ev, el) {
+	const url = $("[data-role='search-box']").val();
+	const result = urlParser.parse(url);
 
-    let loader = $("#loader");
-    loader.show();
+	if (!result.valid()) {
+		alert("Invalid YouTube url");
+		return;
+	}
 
-    https.get(url, (res) => {
-        const { statusCode } = res;
+	const loader = $("#loader");
+	loader.show();
 
-        let error;
-        if (statusCode !== 200){
-            error = new Error("Request failed. "+`Status Code: ${statusCode}.`);
-            console.error(error.message);
-
-            res.resume();
-            return;
-        }
-
-        let rawData = "";
-        res.on("data", chunk => {rawData += chunk;});
-        res.on("end", () => {
-            loader.hide();
-            console.log(rawData);
-            $("#contentarea").val(rawData);
-            $("#video-content").attr("src", url);
-        });
-
-    }).on("error", e => {
-        console.error(`Got error: ${e.message}`)
-    });
+	viewActions.get(url,
+		(rawData) => {
+			loader.hide();
+			$("#contentarea").val(rawData);
+			$("#videoiframe").attr("src", `https://www.youtube.com/embed/${result.id}`);
+		}).on("error", (err) => {
+			alert(err.message);
+		});
 });

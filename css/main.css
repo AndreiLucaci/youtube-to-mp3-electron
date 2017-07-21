@@ -164,3 +164,7 @@ label.error {
 .video-content .button:hover {
     background-color: #3ecfff
 }
+
+.center {
+	text-align: center;
+}
